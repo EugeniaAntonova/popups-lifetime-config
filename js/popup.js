@@ -1,37 +1,35 @@
-import { restPopupTime, isNeededDay, fitPeriod } from "./utils.js";
+import { hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc } from "./utils.js";
 
-const popup1 = document.querySelector('#popup1');
-const popup2 = document.querySelector('#popup2');
+const popups = document.querySelectorAll('.popup');
 
-const hidePopup = (evt) => {
-    const popup = evt.target;
-    popup.classList.remove('show');
-    popup.removeEventListener('click', hidePopup);
+const showPopup = (popup, restPopupTime) => {
+    const cookie = popup.getAttribute('id');
+    const isShown = getCookie(cookie);
+    const block = getCookie('already');
+    if (!isShown && !block) {
+        document.cookie = `${cookie}=shown;max-age=${restPopupTime}`;
+        document.cookie = `already=shown;max-age=10`;
+        popup.classList.add('show');
+        popup.addEventListener('click', hidePopup);
+        popup.addEventListener('keydown', (evt) => handleEsc(evt));
+    }
 }
 
-function getCookie(name) {
-    let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-    return matches ? decodeURIComponent(matches[1]) : false;
+const popupConfig = (popup) => {
+    const restTime = popup.getAttribute('popup-rest-time').split(', ');
+    const restPopupTime = getRestPopupTime(restTime);
+
+    const day  = popup.getAttribute('popup-day');
+    const rightDay = !day ? !isTargetDay(day) : isTargetDay(day);
+    
+    let min = new Date(popup.getAttribute('popup-period-min'));
+    let max = new Date(popup.getAttribute('popup-period-max'));
+    const fitInPeriod = isTheRightPeriod(min, max);
+
+    rightDay && fitInPeriod ? setTimeout( () => {showPopup(popup, restPopupTime)}, 1000) : console.log('not this time, popup')
 }
 
-const showPopup = (evt) => {
-    let theDay = isNeededDay(); 
-    if (theDay) {
-        if (!getCookie('popup1')) {;
-            popup1.classList.add('show');
-            popup1.addEventListener('click', hidePopup);
-            document.cookie = `popup1=shown;max-age=${restPopupTime};`;
-            console.log(document.cookie)
-        } else {
-            if (!getCookie('popup2')) {
-                popup2.classList.add('show');
-                popup2.addEventListener('click', hidePopup);
-                document.cookie = `popup2=shown;max-age=${restPopupTime};`;
-                console.log(document.cookie)
-            }
-        }
-    } 
-}
+popups.forEach((popup) => popupConfig(popup))
 
 export default showPopup;
 

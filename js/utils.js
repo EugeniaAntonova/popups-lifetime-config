@@ -1,14 +1,24 @@
-// time in ms, that we want popup to be hidden. call the function with three arguments (hours, minutes, seconds). E.g.: restPopupTime = getRestPopupTime(0, 15, 0)  = 15 minutes;
-
-const getRestPopupTime = (hours, minutes, seconds) => {
-    return parseInt(hours) * 60 * 60 + parseInt(minutes) * 60 + parseInt(seconds);
+const hidePopup = (evt) => {
+    const popup = evt.target;
+    popup.classList.remove('show');
+    popup.removeEventListener('click', hidePopup);
 }
 
-const restPopupTime = getRestPopupTime(0, 0, 30);
+const handleEsc = (evt) => {
+    console.log('esk')
+    if (evt.key === 'Escape') {
+        hidePopup();
+    }
+}
 
+const getCookie = (name) => {
+    let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+    return matches ? decodeURIComponent(matches[1]) : false;
+}
 
-// if we want to show popup only when it is X day of the week
-const DAY_TO_SHOW = 'fri';
+const getRestPopupTime = (array) => {
+    return parseInt(array[0]) * 60 * 60 + parseInt(array[1]) * 60 + parseInt(array[2]);
+}
 
 const WEEK = {
     0: 'sun',
@@ -20,24 +30,29 @@ const WEEK = {
     6: 'sat'
 }
 
-const isNeededDay = () => {
+const isTargetDay = (theDay) => {
     const today = new Date(Date.now());
-    const day = WEEK[today.getDay()];
-    console.log(day);
-    return day === DAY_TO_SHOW;
+
+    const weekDay = WEEK[today.getDay()];
+    console.log(`${weekDay}, ${theDay}`);
+    return weekDay === theDay;
 }
 
-// if we want to show popup up to some date? in min and max constants input two dates in format year, month, day. monthes count from 0 to 11. 
-// if you want for the minimum to be now - delete everything from the brackets like that: const MIN = new Date();
-
-const MIN = new Date(2023, 11, 20);
-const MAX = new Date(2023, 11, 31);
-
 const isTheRightPeriod = (min, max) => {
+    const dateZero = new Date(0);
     const now = new Date(Date.now());
+
+    if (String(min) === String(dateZero)) {
+        min = now;
+        min.setMinutes(min.getMinutes() - 1);
+    }
+    
+    if (String(max) === String(dateZero)) {
+        max = now;
+        max.setFullYear(max.getFullYear() + 1000);
+    }
+
     return (now >= min && now <= max);
 }
 
-const fitPeriod = isTheRightPeriod();
-
-export {restPopupTime, isNeededDay, fitPeriod}
+export {hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc}
