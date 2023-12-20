@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *, 
+        *::before, 
+        *::after {
+            box-sizing: border-box;
+        }
+        /* .page {
+          position: relative;  
+        } */
+
+        .popup {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            transform: scale(0);
+            pointer-events: none;
+            visibility: hidden;
+            transition: transform .5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        } 
+
+        .popup article {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            outline: 3px dashed tomato;
+            text-align: center;
+            font-family: sans-serif;
+            font-weight: 500;
+            color: rgba(0,0,0,0.8);
+            background-color: aliceblue;
+        }
+
+        .popup.show {
+            position: fixed;
+            transform: scale(1);
+            pointer-events: all;
+            visibility: visible;
+            background-color: rgba(0,0,0,0.3);
+
+        }
+
+        .popup b {
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .header {
+            height: 80px;
+            outline: 1px solid tomato;
+            background-color: tomato;
+            margin-bottom: 15px;
+            background-size: 30px 30px;
+            background-image: linear-gradient(45deg, white 25%, transparent 0, transparent 50%, white 0, white 75%, transparent 0);
+        }
+
+        .section {
+            background-color: purple;
+            height: 700px;
+            outline: 1px solid purple;
+            background-size: 300px 300px;
+            background-image: linear-gradient(45deg, white 25%, transparent 0, transparent 50%, white 0, white 75%, transparent 0);            
+        }
+
+        .section:not(:last-of-type) {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+
+    </header>
+    <main class="page">
+        <section class="section"></section>
+        <section class="section"></section>
+        <section class="popup" id="popup1">
+            <article>
+                <h1>This popup <b>A</b> shows on reload once in <b>30&nbsp;sec</b></h1>
+            </article>
+        </section>
+        <section class="popup" id="popup2">
+            <article>
+                <h1>This popup <b>B</b> shows on reload once in <b>30&nbsp;sec</b></h1>
+            </article>
+        </section>
+    </main>
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>
