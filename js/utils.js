@@ -1,14 +1,27 @@
-const hidePopup = (evt) => {
-    const popup = evt.target;
+const hidePopup = (popup) => {
     popup.classList.remove('show');
-    popup.removeEventListener('click', hidePopup);
+    popup.removeEventListener('click', handleSideClick);
+    document.removeEventListener('keydown', handleEsc);
 }
 
-const handleEsc = (evt) => {
-    console.log('esk')
-    if (evt.key === 'Escape') {
-        hidePopup();
+const isEsc = (evt) => evt.key === 'Escape';
+
+function handleEsc (evt) {
+    const popup = document.querySelector('.popup.show');
+    if(isEsc(evt)) {
+      evt.preventDefault();
+      hidePopup(popup);
     }
+  }
+
+const handleSideClick = (evt) => {
+    const popup = evt.target;
+    hidePopup(popup);
+}
+
+const handleCloseBtnClick = () => {
+    const popup = document.querySelector('.popup.show');
+    hidePopup(popup);
 }
 
 const getCookie = (name) => {
@@ -39,6 +52,7 @@ const isTargetDay = (theDay) => {
 }
 
 const isTheRightPeriod = (min, max) => {
+
     const now = new Date(Date.now())
     const nowMs = now.getTime();
 
@@ -55,4 +69,4 @@ const isTheRightPeriod = (min, max) => {
     return (now >= min && now <= max);
 }
 
-export {hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc}
+export {hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick}

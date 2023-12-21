@@ -1,4 +1,4 @@
-import { hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc } from './utils.js';
+import { hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick } from './utils.js';
 
 const popups = document.querySelectorAll('.popup');
 
@@ -10,8 +10,11 @@ const showPopup = (popup, restPopupTime) => {
         document.cookie = `${cookie}=shown;max-age=${restPopupTime}`;
         document.cookie = `already=shown;max-age=10`;
         popup.classList.add('show');
-        popup.addEventListener('click', hidePopup);
-        popup.addEventListener('keydown', (evt) => handleEsc(evt));
+
+        const closeButton = document.querySelector('.p-close-btn');
+        closeButton.addEventListener('click', handleCloseBtnClick)
+        popup.addEventListener('click', handleSideClick);
+        document.addEventListener('keydown', handleEsc);
     }
 }
 
