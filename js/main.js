@@ -1,3 +1,3 @@
-import showPopup from "./popup.js";
+import touchPopups from "./popup.js";
 
-window.addEventListener('load', showPopup)
+window.addEventListener('load', touchPopups)

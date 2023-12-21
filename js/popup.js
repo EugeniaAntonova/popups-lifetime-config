@@ -1,4 +1,4 @@
-import { hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc } from "./utils.js";
+import { hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc } from './utils.js';
 
 const popups = document.querySelectorAll('.popup');
 
@@ -22,14 +22,17 @@ const popupConfig = (popup) => {
     const day  = popup.getAttribute('popup-day');
     const rightDay = !day ? !isTargetDay(day) : isTargetDay(day);
     
-    let min = new Date(popup.getAttribute('popup-period-min'));
-    let max = new Date(popup.getAttribute('popup-period-max'));
+    let min = (new Date(popup.getAttribute('popup-period-min'))).getTime();
+    let max = (new Date(popup.getAttribute('popup-period-max'))).getTime();
     const fitInPeriod = isTheRightPeriod(min, max);
 
-    rightDay && fitInPeriod ? setTimeout( () => {showPopup(popup, restPopupTime)}, 1000) : console.log('not this time, popup')
+    rightDay && fitInPeriod ? setTimeout( () => {showPopup(popup, restPopupTime)}, 500) : console.log('not this time, popup')
 }
 
-popups.forEach((popup) => popupConfig(popup))
+const touchPopups = () => {
 
-export default showPopup;
+    popups.forEach((popup) => popupConfig(popup))
+}
+
+export default touchPopups;
 

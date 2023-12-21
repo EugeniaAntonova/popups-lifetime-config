@@ -39,17 +39,17 @@ const isTargetDay = (theDay) => {
 }
 
 const isTheRightPeriod = (min, max) => {
-    const dateZero = new Date(0);
-    const now = new Date(Date.now());
+    const now = new Date(Date.now())
+    const nowMs = now.getTime();
 
-    if (String(min) === String(dateZero)) {
-        min = now;
-        min.setMinutes(min.getMinutes() - 1);
+    if (min === 0) {    
+        min = nowMs - 60000;
     }
     
-    if (String(max) === String(dateZero)) {
+    if (max === 0) {
         max = now;
-        max.setFullYear(max.getFullYear() + 1000);
+        max.setFullYear(max.getFullYear() + 1000)
+        max = max.getTime();
     }
 
     return (now >= min && now <= max);
