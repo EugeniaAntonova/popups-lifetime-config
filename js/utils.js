@@ -1,3 +1,5 @@
+const BLOCKER = 5000;
+
 const hidePopup = (popup) => {
     popup.classList.remove('show');
     popup.removeEventListener('click', handleSideClick);
@@ -47,7 +49,6 @@ const isTargetDay = (theDay) => {
     const today = new Date(Date.now());
 
     const weekDay = WEEK[today.getDay()];
-    console.log(`${weekDay}, ${theDay}`);
     return weekDay === theDay;
 }
 
@@ -69,4 +70,4 @@ const isTheRightPeriod = (min, max) => {
     return (now >= min && now <= max);
 }
 
-export {hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick}
+export {hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick, BLOCKER}
