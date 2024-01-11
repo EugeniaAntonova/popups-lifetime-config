@@ -1,7 +1,6 @@
-const BLOCKER = 10000;
-
 const hidePopup = (popup) => {
     popup.classList.remove('show');
+    popup.querySelector('.p-close-btn').removeEventListener('click', handleCloseBtnClick)
     popup.removeEventListener('click', handleSideClick);
     document.removeEventListener('keydown', handleEsc);
 }
@@ -70,4 +69,4 @@ const isTheRightPeriod = (min, max) => {
     return (now >= min && now <= max);
 }
 
-export {hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick, BLOCKER}
+export {hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick}

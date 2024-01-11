@@ -1,6 +1,4 @@
-import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick, BLOCKER } from './utils.js';
-
-// const popups = document.querySelectorAll('.p-popup');
+import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick } from './utils.js';
 
 const showPopup = (popup, restPopupTime) => {
     const cookie = popup.getAttribute('id');
@@ -21,11 +19,6 @@ const showPopup = (popup, restPopupTime) => {
     if (!isShown && !block) {
         configAndShow(cookie, restPopupTime, popup);
     } 
-    // else if (!isShown && block) {
-    //     setTimeout(() => {
-    //         configAndShow(cookie, restPopupTime, popup);
-    //     }, BLOCKER)
-    // }
 }
 
 const popupConfig = (popup) => {
