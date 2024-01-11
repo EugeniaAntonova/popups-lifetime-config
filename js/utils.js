@@ -1,4 +1,4 @@
-const BLOCKER = 5000;
+const BLOCKER = 10000;
 
 const hidePopup = (popup) => {
     popup.classList.remove('show');

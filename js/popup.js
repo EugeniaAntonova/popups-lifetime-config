@@ -1,6 +1,6 @@
 import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick, BLOCKER } from './utils.js';
 
-const popups = document.querySelectorAll('.popup');
+// const popups = document.querySelectorAll('.p-popup');
 
 const showPopup = (popup, restPopupTime) => {
     const cookie = popup.getAttribute('id');
@@ -20,19 +20,22 @@ const showPopup = (popup, restPopupTime) => {
     }
     if (!isShown && !block) {
         configAndShow(cookie, restPopupTime, popup);
-    } else if (!isShown && block) {
-        setTimeout(() => {
-            configAndShow(cookie, restPopupTime, popup);
-        }, BLOCKER)
-    }
+    } 
+    // else if (!isShown && block) {
+    //     setTimeout(() => {
+    //         configAndShow(cookie, restPopupTime, popup);
+    //     }, BLOCKER)
+    // }
 }
 
 const popupConfig = (popup) => {
     const restTime = popup.getAttribute('popup-rest-time').split(', ');
     const restPopupTime = getRestPopupTime(restTime);
+    console.log(restPopupTime);
 
     const day = popup.getAttribute('popup-day');
     const rightDay = !day ? !isTargetDay(day) : isTargetDay(day);
+    console.log(rightDay)
 
     let min = (new Date(popup.getAttribute('popup-period-min'))).getTime();
     let max = (new Date(popup.getAttribute('popup-period-max'))).getTime();
@@ -42,6 +45,7 @@ const popupConfig = (popup) => {
 }
 
 const touchPopups = () => {
+    const popups = document.querySelectorAll('.p-popup');
     popups.forEach((popup) => popupConfig(popup))
 }
 
