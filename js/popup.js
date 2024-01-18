@@ -24,11 +24,9 @@ const showPopup = (popup, restPopupTime) => {
 const popupConfig = (popup) => {
     const restTime = popup.getAttribute('popup-rest-time').split(', ');
     const restPopupTime = getRestPopupTime(restTime);
-    console.log(restPopupTime);
 
     const day = popup.getAttribute('popup-day');
     const rightDay = !day ? !isTargetDay(day) : isTargetDay(day);
-    console.log(rightDay)
 
     let min = (new Date(popup.getAttribute('popup-period-min'))).getTime();
     let max = (new Date(popup.getAttribute('popup-period-max'))).getTime();
