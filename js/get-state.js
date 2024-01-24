@@ -62,7 +62,7 @@ const onSuccess = (who, cb) => {
   const getData = async (onSuccess, onFail, cb) => {
     try {
       const response = await fetch(
-        // 'https://rpo.logycom.kz/tm/threemen.dll/srvNew?srv=rShortInfo'
+        // 'https://rpo.logycom.kz/tm/threemen.dll/srvNew?srv=rShortInfo',
         '/data.json'
       );
   

@@ -1,85 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        *, 
-        *::before, 
-        *::after {
-            box-sizing: border-box;
-        }
-        /* .page {
-          position: relative;  
-        } */
-
-        .popup {
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            transform: scale(0);
-            pointer-events: none;
-            visibility: hidden;
-            transition: transform .5s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        } 
-
-        .popup article {
-            width: 300px;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 50px;
-            outline: 3px dashed tomato;
-            text-align: center;
-            font-family: sans-serif;
-            font-weight: 500;
-            color: rgba(0,0,0,0.8);
-            background-color: aliceblue;
-        }
-
-        .popup.show {
-            position: fixed;
-            transform: scale(1);
-            pointer-events: all;
-            visibility: visible;
-            background-color: rgba(0,0,0,0.3);
-
-        }
-
-        .popup b {
-            font-size: 1.2em;
-            font-weight: 700;
-        }
-
-        .header {
-            height: 80px;
-            outline: 1px solid tomato;
-            background-color: tomato;
-            margin-bottom: 15px;
-            background-size: 30px 30px;
-            background-image: linear-gradient(45deg, white 25%, transparent 0, transparent 50%, white 0, white 75%, transparent 0);
-        }
-
-        .section {
-            background-color: purple;
-            height: 700px;
-            outline: 1px solid purple;
-            background-size: 300px 300px;
-            background-image: linear-gradient(45deg, white 25%, transparent 0, transparent 50%, white 0, white 75%, transparent 0);            
-        }
-
-        .section:not(:last-of-type) {
-            margin-bottom: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/email.css">
 </head>
+
 <body>
     <header class="header">
 
@@ -87,57 +16,67 @@
     <main class="page">
         <section class="section"></section>
         <section class="section"></section>
-        <!-- <section class="p-popup" id="popup1" popup-rest-time="0, 0, 30" popup-period-min="2023, 12, 20">
-            <article>
-                <h1>This popup <b>A</b> shows on reload once in <b>30&nbsp;sec</b></h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
-            </article>
-        </section>
 
-
-        <section class="p-popup" id="popup2" popup-rest-time="0, 0, 30" popup-day="wed" popup-period-max="2024, 12, 21, 15:30">
+        <section class="my-popup popup email" id="email-popup">
             <article>
-                <h1>This popup <b>B</b> shows on reload once in <b>30&nbsp;sec</b></h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
-            </article>
-        </section> -->
-        <section class="popup" id="email-popup">
-            <article>
-                <h1>Please fill in your email</h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
+                <button type="button" class="my-close-btn p-close-btn" aria-label="закрыть всплывающее окно">
+                    <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="16" y="1.455" width="20.57" height="2.057" rx="1.028" transform="rotate(135 16 1.455)"
+                            fill="#fff" />
+                        <rect width="20.57" height="2.057" rx="1.028" transform="scale(1 -1) rotate(-45 -1.756 -.727)"
+                            fill="#fff" />
+                    </svg>
+                </button>
+                <h1 class="visually-hidden">Please fill in your email</h1>
+                <div class="decor"></div>
+                <div class="content">
+                    <p class="descr">
+                        Подпишитесь на&nbsp;рассылку, чтобы первым узнавать о&nbsp;новостях лотерей, новых акциях
+                        и&nbsp;наших лучших предложениях.
+                    </p>
+                    <form action="/" method="post" class="newsletter-form">
+                        <div class="input-wrapper">
+                            <input type="email" name="email" id="email" required placeholder="Введите ваш email">
+                            <span class="error">Неправильный email</span>
+                        </div>
+                        <button type="submit" class="my-sbmt-btn">подписаться</button>
+                    </form>
+                </div>
             </article>
         </section>
         <section class="popup" id="twenty-popup">
             <article>
                 <h1>20% off</h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
+                <button type="button" class="p-close-btn">dismiss</button>
             </article>
         </section>
         <section class="popup" id="fifteen-popup">
             <article>
                 <h1>15% off</h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
+                <button type="button" class="p-close-btn">dismiss</button>
             </article>
         </section>
         <section class="popup" id="ten-popup">
             <article>
                 <h1>10% off</h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
+                <button type="button" class="p-close-btn">dismiss</button>
             </article>
         </section>
         <section class="popup" id="newcomers-popup">
             <article>
                 <h1>Newbies get extra!</h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
+                <button type="button" class="p-close-btn">dismiss</button>
             </article>
         </section>
         <section class="popup" id="cashback-popup">
             <article>
                 <h1>Cash back for all!</h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
+                <button type="button" class="p-close-btn">dismiss</button>
             </article>
         </section>
     </main>
     <script type="module" src="/js/main.js"></script>
+    <script src="/js/form.js"></script>
 </body>
+
 </html>
