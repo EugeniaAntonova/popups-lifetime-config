@@ -1,51 +1,9 @@
-
-.my-popup.email {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    font-family: "Inter", sans-serif;
-    background-color: rgba(0, 0, 0, 0.7);
-    /* transform: scale(0); */
-    /* visibility: hidden;
-    transition: transform .5s ease; */
-}
-
 .my-popup.email article {
-    outline: none;
-    width: 100%;
-    padding: 24px 16px 64px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border-radius: 32px 32px 0 0;
     background-image: radial-gradient(184.93% 100% at 50% 0%, #AED8FF 7.52%, #FFFFFF 50.04%);
 }
 
 .my-popup.email .decor {
-    height: 180px;
-    min-width: 50%;
     background-image: url('../assets/img/mail.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-.my-popup.email .descr {
-    margin: 0;
-    margin-bottom: 34px;
-    padding-right: 20px;
-}
-
-.my-popup.email .my-close-btn {
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    top: -24px;
-    right: 8px;
 }
 
 .my-popup.email form {
@@ -64,7 +22,7 @@
     padding: 20px 24px;
     background-color: transparent;
     border: 1px solid rgba(0, 51, 153, 0.3);
-    outline-color: transparent;
+    outline: none;
     outline-offset: 4px;
     border-radius: 12px;
     color: #000;
@@ -83,18 +41,8 @@
 }
 
 .my-popup.email form button.my-sbmt-btn {
-    padding: 20px 24px;
     background-color: rgba(0, 51, 153, 1);
-    border: none;
     outline-color: rgba(0, 51, 153, 1);
-    outline-offset: 4px;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 14px;
-    line-height: normal;
-    font-weight: 700;
-    letter-spacing: 0.28px;
-    text-transform: uppercase;
 }
 
 .my-popup.email form button.my-sbmt-btn:disabled {
@@ -115,23 +63,7 @@
 }
 
 @media (min-width: 850px) {
-    .my-popup.email {
-        justify-content: center;
-    }
-
     .my-popup.email article {
-        max-width: 750px;
-        padding: 64px 32px 64px;
-        flex-direction: row-reverse;
         background-image: radial-gradient(150% 155% at 100% 50%, #AED8FF 7.52%, #FFFFFF 50.04%);
-        border-radius: 32px;
     }
-    .my-popup.email article .content {
-        width: 50%;
-    }
-
-    .my-popup.email .decor {
-        height: 100%;
-    }
-
 }

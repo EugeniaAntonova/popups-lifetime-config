@@ -1,0 +1,35 @@
+.ten-percent article {
+    background-image: radial-gradient(184.93% 100% at 50% 0%, #e6aeff 7.52%, #FFFFFF 50.04%);
+}
+
+.ten-percent .p-action-button {
+    background-color: #b051da;
+}
+
+.twenty-percent article {
+    background-image: radial-gradient(184.93% 100% at 50% 0%, #87f6ad 7.52%, #FFFFFF 50.04%);
+}
+
+.twenty-percent .p-action-button {
+    background-color: #56a070;
+}
+
+.fifteen-percent article {
+    background-image: radial-gradient(184.93% 100% at 50% 0%, #9ffffd 7.52%, #FFFFFF 50.04%);
+}
+
+.fifteen-percent .p-action-button {
+    background-color: #548c8b;
+}
+
+@media (min-width: 850px) {
+    .ten-percent article {
+        background-image: radial-gradient(150% 155% at 100% 50%, #e6aeff 7.52%, #FFFFFF 50.04%);
+    }
+    .twenty-percent article {
+        background-image: radial-gradient(150% 155% at 100% 50%, #87f6ad 7.52%, #FFFFFF 50.04%);
+    }
+    .fifteen-percent article {
+        background-image: radial-gradient(150% 155% at 100% 50%, #9ffffd 7.52%, #FFFFFF 50.04%);
+    }
+}

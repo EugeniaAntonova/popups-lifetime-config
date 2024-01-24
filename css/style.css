@@ -23,52 +23,102 @@ body {
 }
 
 .popup {
-    position: absolute;
+    position: fixed;
     inset: 0;
-    margin: auto;
-    transform: scale(0);
-    pointer-events: none;
-    visibility: hidden;
-    transition: transform .5s ease;
+    z-index: 105;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    font-family: "Inter", sans-serif;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    transform: scale(0);
+    filter: blur(1000px);
+    transition: transform .5s ease, filter .5s ease;
 }
 
 .popup article {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    padding: 24px 16px 64px;
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-    outline: 3px dashed tomato;
+    border-radius: 32px 32px 0 0;
+}
+
+.popup article .decor {
+    height: 180px;
+    min-width: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.popup article .descr {
+    margin: 0;
+    margin-bottom: 34px;
+    padding-right: 20px;
+}
+
+.p-close-btn {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: -24px;
+    right: 8px;
+    cursor: pointer;
+}
+
+.p-action-button {
+    display: block;
+    text-decoration: none;
+    padding: 20px 24px;
+    border: none;
+    outline-offset: 4px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 14px;
+    line-height: normal;
+    font-weight: 700;
+    letter-spacing: 0.28px;
+    text-transform: uppercase;
     text-align: center;
-    font-family: sans-serif;
-    font-weight: 500;
-    color: rgba(0, 0, 0, 0.8);
-    background-color: aliceblue;
 }
 
 .popup.show {
-    position: fixed;
     transform: scale(1);
+    filter: none;
     pointer-events: all;
     visibility: visible;
     background-color: rgba(0, 0, 0, 0.3);
 
 }
 
-.popup b {
-    font-size: 1.2em;
-    font-weight: 700;
+
+@media (min-width: 850px) {
+    .popup {
+        justify-content: center;
+    }
+
+    .popup article {
+        max-width: 750px;
+        padding: 64px 32px 64px;
+        flex-direction: row-reverse;
+        border-radius: 32px;
+    }
+    .popup article .content {
+        width: 50%;
+    }
+
+    .popup article .decor {
+        height: 100%;
+    }
+
 }
 
 .header {
     height: 80px;
-    outline: 1px solid tomato;
     background-color: tomato;
     margin-bottom: 15px;
     background-size: 30px 30px;
@@ -78,13 +128,16 @@ body {
 .section {
     background-color: purple;
     height: 700px;
-    outline: 1px solid purple;
     background-size: 300px 300px;
     background-image: linear-gradient(45deg, white 25%, transparent 0, transparent 50%, white 0, white 75%, transparent 0);
 }
 
 .section:not(:last-of-type) {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.p-close-btn {
+    cursor: pointer;
 }
 
 

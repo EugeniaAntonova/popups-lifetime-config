@@ -29,27 +29,18 @@ const onSuccess = (who, cb) => {
 
     if (balance + canWithdraw === 0 && bonus < 200 && daysFromReg < 7) {
         const pPopup = document.querySelector('#twenty-popup');
-        const secondPPopup = document.querySelector('#newcomers-popup')
         pPopup.classList.add('p-popup');
-        secondPPopup.classList.add('p-popup');
         pPopup.setAttribute('popup-rest-time', '24, 0, 0');        
-        secondPPopup.setAttribute('popup-rest-time', '24, 0, 0');
         cb();        
     } else if (balance + canWithdraw < 200 && daysFromReg > 7 && daysFromReg < 30) {
         const pPopup = document.querySelector('#fifteen-popup');
-        const secondPPopup = document.querySelector('#cashback-popup')
         pPopup.classList.add('p-popup');
-        secondPPopup.classList.add('p-popup');
         pPopup.setAttribute('popup-rest-time', `${3*24}, 0, 0`);        
-        secondPPopup.setAttribute('popup-rest-time', `${3*24}, 0, 0`); 
         cb();       
     } else if (balance + canWithdraw < 200 && daysFromReg > 30) {
         const pPopup = document.querySelector('#ten-popup');
-        const secondPPopup = document.querySelector('#cashback-popup')
         pPopup.classList.add('p-popup');
-        secondPPopup.classList.add('p-popup');
-        pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);        
-        secondPPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);      
+        pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);          
         cb();  
     }
 
