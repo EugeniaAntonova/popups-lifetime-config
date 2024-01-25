@@ -4,6 +4,7 @@
 
 .ten-percent .p-action-button {
     background-color: #b051da;
+    outline-color: #b051da;
 }
 
 .twenty-percent article {
@@ -12,6 +13,7 @@
 
 .twenty-percent .p-action-button {
     background-color: #56a070;
+    outline-color: #56a070;
 }
 
 .fifteen-percent article {
@@ -20,6 +22,7 @@
 
 .fifteen-percent .p-action-button {
     background-color: #548c8b;
+    outline-color: #548c8b;
 }
 
 @media (min-width: 850px) {
