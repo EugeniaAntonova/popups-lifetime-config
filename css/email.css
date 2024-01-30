@@ -61,9 +61,3 @@
 .my-popup.email .error.error--show {
     visibility: visible;
 }
-
-@media (min-width: 850px) {
-    .my-popup.email article {
-        background-image: radial-gradient(150% 155% at 100% 50%, #AED8FF 7.52%, #FFFFFF 50.04%);
-    }
-}

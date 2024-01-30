@@ -34,37 +34,52 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
 
     transform: scale(0);
-    filter: blur(1000px);
-    transition: transform .5s ease, filter .5s ease;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease;
 }
 
 .popup article {
     width: 100%;
-    padding: 24px 16px 64px;
+    padding-bottom: 64px;
     position: relative;
     display: flex;
     flex-direction: column;
     border-radius: 32px 32px 0 0;
+    background-color: #fff;
 }
 
 .popup article .decor {
-    height: 180px;
-    min-width: 50%;
+    height: 223px;
+    width: 100%;
+    margin-bottom: 24px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    border-radius: 32px 32px 0 0;
+}
+
+.popup article .content {
+    padding: 0 16px;
 }
 
 .popup article .descr {
     margin: 0;
     margin-bottom: 34px;
-    padding-right: 20px;
+    padding-right: 16px;
+    font-size: 18px;
+    line-height: 122%;
 }
 
 .p-close-btn {
     background-color: transparent;
     border: none;
     position: absolute;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml, %3Csvg width='16' height='16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='16' y='1.455' width='20.57' height='2.057' rx='1.028' transform='rotate(135 16 1.455)' fill='%23fff' /%3E%3Crect width='20.57' height='2.057' rx='1.028' transform='scale(1 -1) rotate(-45 -1.756 -.727)' fill='%23fff' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
     top: -24px;
     right: 8px;
     cursor: pointer;
@@ -75,9 +90,11 @@ body {
     text-decoration: none;
     padding: 20px 24px;
     border: none;
+    outline-color: #1249B5;
     outline-offset: 4px;
     border-radius: 12px;
     color: #fff;
+    background-color: #1249B5;
     font-size: 14px;
     line-height: normal;
     font-weight: 700;
@@ -86,13 +103,33 @@ body {
     text-align: center;
 }
 
-.popup.show {
-    transform: scale(1);
-    filter: none;
-    pointer-events: all;
-    visibility: visible;
-    background-color: rgba(0, 0, 0, 0.3);
+.p-close-btn:hover,
+.p-close-btn:focus-visible,
+.p-action-button:hover, 
+.p-action-button:focus-visible {
+    filter: brightness(1.2);
+}
 
+.p-close-btn:active,
+.p-action-button:active {
+    filter: brightness(0.8);
+}
+
+.popup.show {
+    perspective: 1500px;
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.popup.show article {
+    transform-style: preserve-3d;
+    animation-name: slide-up;
+    animation-duration: 1.5s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
 }
 
 
@@ -102,45 +139,74 @@ body {
     }
 
     .popup article {
-        max-width: 750px;
-        padding: 64px 32px 64px;
-        flex-direction: row-reverse;
+        max-width: 400px;
         border-radius: 32px;
     }
+
     .popup article .content {
-        width: 50%;
+        padding: 0 24px;
     }
 
-    .popup article .decor {
-        height: 100%;
+    .popup article .descr {
+        font-size: 20px;
     }
 
-}
+    .p-close-btn {
+        width: 24px;
+        height: 24px;
+        top: 0;
+        right: -32px;
+    }
 
-.header {
-    height: 80px;
-    background-color: tomato;
-    margin-bottom: 15px;
-    background-size: 30px 30px;
-    background-image: linear-gradient(45deg, white 25%, transparent 0, transparent 50%, white 0, white 75%, transparent 0);
-}
-
-.section {
-    background-color: purple;
-    height: 700px;
-    background-size: 300px 300px;
-    background-image: linear-gradient(45deg, white 25%, transparent 0, transparent 50%, white 0, white 75%, transparent 0);
-}
-
-.section:not(:last-of-type) {
-    margin-bottom: 30px;
-}
-
-.p-close-btn {
-    cursor: pointer;
+    .popup.show article {
+        padding-bottom: 40px;
+        animation-name: bounce-in-top;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
 }
 
 
-/* specified popups styles */
+@keyframes slide-up {
 
-/* ============================ email */
+    0% {
+        transform: translateY(1000px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+  }
+
+  @keyframes bounce-in-top {
+    0% {
+        transform: translateY(-1000px);
+        animation-timing-function: ease-in;
+    }
+
+    38%,
+    73%,
+    90%,
+    100% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+    }
+
+    58% {
+        transform: translateY(-65px);
+        animation-timing-function: ease-in;
+    }
+
+    83% {
+        transform: translateY(-30px);
+        animation-timing-function: ease-in;
+    }
+
+    95% {
+        transform: translateY(-5px);
+        animation-timing-function: ease-in;
+    }
+
+
+}
