@@ -96,7 +96,7 @@ const showPPopup = (popup, restPopupTime) => {
 
 const pPopupConfig = (popup) => {
     const restTime = popup.getAttribute('popup-rest-time').split(', ');
-    const restPopupTime = getRestPopupTime(restTime);
+    const restPopupTime = restTime ? getRestPopupTime(restTime) : 0;
 
     const day = popup.getAttribute('popup-day');
     const rightDay = !day ? !isTargetDay(day) : isTargetDay(day);
@@ -116,8 +116,6 @@ const touchPopups = () => {
 // ==============================================================  get state
 
 const onSuccess = (who, cb) => {
-    console.log('hi who', who)
-    console.log('cb', cb)
     const {email, bonus, dataReg, balance, canWithdraw } = who;
 
     const getDateDiff = () => {
