@@ -83,6 +83,16 @@ body {
     top: -24px;
     right: 8px;
     cursor: pointer;
+    transition: filter .3s ease-in-out;
+}
+
+.p-close-btn:hover,
+.p-close-btn:focus-visible {
+    filter: brightness(1.5);
+}
+
+.p-close-btn:active {
+    filter: brightness(0.7);
 }
 
 .p-action-button {
@@ -101,18 +111,18 @@ body {
     letter-spacing: 0.28px;
     text-transform: uppercase;
     text-align: center;
+    transition: background-color .3s ease-in-out;
 }
 
-.p-close-btn:hover,
-.p-close-btn:focus-visible,
 .p-action-button:hover, 
 .p-action-button:focus-visible {
-    filter: brightness(1.2);
+    background-color: #4b7cda;
+    color: #fff;
 }
 
-.p-close-btn:active,
 .p-action-button:active {
-    filter: brightness(0.8);
+   background-color: #082969;
+   color: #f9f9f9;
 }
 
 .popup.show {

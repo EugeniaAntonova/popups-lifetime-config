@@ -1,6 +1,4 @@
 const onSuccess = (who, cb) => {
-    console.log('hi who', who)
-    console.log('cb', cb)
     const {email, bonus, dataReg, balance, canWithdraw } = who;
 
     const getDateDiff = () => {
@@ -47,8 +45,8 @@ const onSuccess = (who, cb) => {
     cb()
   }
   
-  const onFail = (what) => {
-    console.log(what);
+  const onFail = (err) => {
+    console.log(err);
   }
   const getData = async (onSuccess, onFail, cb) => {
     try {

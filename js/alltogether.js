@@ -78,14 +78,14 @@ const showPPopup = (popup, restPopupTime) => {
     const isShown = getCookies(cookie);
     const block = getCookies('already');
 
-    const configAndShow = (name, lifetime, who) => {
-        document.cookie = `${name}=shown;max-age=${lifetime}`;
-        document.cookie = `already=shown;max-age=10`;
-        who.classList.add('show');
+    const configAndShow = (cookie, restPopupTime, pPopup) => {
+        document.cookie = `${cookie}=shown;max-age=${restPopupTime}`;
+        document.cookie = `already=shown;max-age=5`;
+        pPopup.classList.add('show');
 
-        const closeButton = who.querySelector('.p-close-btn');
+        const closeButton = pPopup.querySelector('.p-close-btn');
         closeButton.addEventListener('click', handleCloseBtnClick)
-        who.addEventListener('click', handleSideClick);
+        pPopup.addEventListener('click', handleSideClick);
         window.addEventListener('keydown', handleEsc);
 
     }
@@ -105,7 +105,7 @@ const pPopupConfig = (popup) => {
     let max = (new Date(popup.getAttribute('popup-period-max'))).getTime();
     const fitInPeriod = isTheRightPeriod(min, max);
 
-    rightDay && fitInPeriod ? setTimeout(() => { showPPopup(popup, restPopupTime) }, 300) : console.log('not this time, popup')
+    rightDay && fitInPeriod ? setTimeout(() => { showPPopup(popup, restPopupTime) }, 100) : console.log('not this time, popup')
 }
 
 const touchPopups = () => {
@@ -136,11 +136,11 @@ const onSuccess = (who, cb) => {
 
     const daysFromReg = getDateDiff();
 
-    if (!email) {
-        const pPopup = document.querySelector('#email-popup');
-        pPopup.classList.add('p-popup');
-        pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);
-    }
+    // if (!email) {
+    //     const pPopup = document.querySelector('#email-popup');
+    //     pPopup.classList.add('p-popup');
+    //     pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);
+    // }
 
     if (balance + canWithdraw === 0 && bonus < 200 && daysFromReg < 7) {
         const pPopup = document.querySelector('#twenty-popup');

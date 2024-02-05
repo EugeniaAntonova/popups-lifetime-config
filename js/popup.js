@@ -5,14 +5,14 @@ const showPopup = (popup, restPopupTime) => {
     const isShown = getCookie(cookie);
     const block = getCookie('already');
 
-    const configAndShow = (name, lifetime, who) => {
-        document.cookie = `${name}=shown;max-age=${lifetime}`;
+    const configAndShow = (cookie, restPopupTime, pPopup) => {
+        document.cookie = `${cookie}=shown;max-age=${restPopupTime}`;
         document.cookie = `already=shown;max-age=10`;
-        who.classList.add('show');
+        pPopup.classList.add('show');
 
-        const closeButton = who.querySelector('.p-close-btn');
+        const closeButton = pPopup.querySelector('.p-close-btn');
         closeButton.addEventListener('click', handleCloseBtnClick)
-        who.addEventListener('click', handleSideClick);
+        pPopup.addEventListener('click', handleSideClick);
         window.addEventListener('keydown', handleEsc);
 
     }
