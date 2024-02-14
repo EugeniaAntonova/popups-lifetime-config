@@ -105,7 +105,7 @@ const pPopupConfig = (popup) => {
     let max = (new Date(popup.getAttribute('popup-period-max'))).getTime();
     const fitInPeriod = isTheRightPeriod(min, max);
 
-    rightDay && fitInPeriod ? setTimeout(() => { showPPopup(popup, restPopupTime) }, 100) : console.log('not this time, popup')
+    rightDay && fitInPeriod ? setTimeout(() => { showPPopup(popup, restPopupTime) }, 0) : console.log('not this time, popup')
 }
 
 const touchPopups = () => {
