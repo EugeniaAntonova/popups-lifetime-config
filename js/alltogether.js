@@ -136,23 +136,23 @@ const onSuccess = (who, cb) => {
 
     const daysFromReg = getDateDiff();
 
-    // if (!email) {
-    //     const pPopup = document.querySelector('#email-popup');
-    //     pPopup.classList.add('p-popup');
-    //     pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);
-    // }
+    if (!email) {
+        const pPopup = document.querySelector('#email-popup');
+        pPopup.classList.add('p-popup');
+        pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);
+    }
 
-    if (balance + canWithdraw === 0 && bonus < 200 && daysFromReg < 7) {
+    if (balance + canWithdraw === 0 && bonus < 200 && daysFromReg < 10) {
         const pPopup = document.querySelector('#twenty-popup');
         pPopup.classList.add('p-popup');
         pPopup.setAttribute('popup-rest-time', '24, 0, 0');        
         cb();        
-    } else if (balance + canWithdraw < 200 && daysFromReg > 7 && daysFromReg < 30) {
+    } else if (balance + canWithdraw < 200 && daysFromReg > 10 && daysFromReg < 60) {
         const pPopup = document.querySelector('#fifteen-popup');
         pPopup.classList.add('p-popup');
         pPopup.setAttribute('popup-rest-time', `${3*24}, 0, 0`);        
         cb();       
-    } else if (balance + canWithdraw < 200 && daysFromReg > 30) {
+    } else if (balance + canWithdraw < 200 && daysFromReg > 60) {
         const pPopup = document.querySelector('#ten-popup');
         pPopup.classList.add('p-popup');
         pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);          

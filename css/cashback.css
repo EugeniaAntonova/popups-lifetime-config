@@ -1,6 +1,6 @@
 .ten-percent article .decor{
-    background-size: 312px 160px, cover;
-    background-image: url('./assets/img/10.png'), linear-gradient(180deg, #0EC8A1 0%, #008669 100%);
+    background-size: 242px 170px, cover;
+    background-image: url('./assets/img/5.png'), linear-gradient(180deg, #0EC8A1 0%, #008669 100%);
 }
 
 .fifteen-percent article .decor {
