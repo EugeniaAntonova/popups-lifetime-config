@@ -13,13 +13,8 @@
     background-image: url('./assets/img/20.png'), linear-gradient(180deg, #1249B5 0%, #1864F9 100%);
 }
 
-.five-halyk-percent article .decor {
+.tb article .decor {
     background-size: cover;
-    background-image: url('./assets/img/5halyk.png');
-}
-
-#fourteen-feb-popup article .decor {
-    background-size: cover;
-    background-image: url('./assets/img/14feb.jpg');
-    border: 1px solid #fff;
+    background-image: url('./assets/img/TB.png');
+    border: none;
 }
