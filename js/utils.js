@@ -7,13 +7,13 @@ const hidePopup = (popup) => {
 
 const isEsc = (evt) => evt.key === 'Escape';
 
-function handleEsc (evt) {
+function handleEsc(evt) {
     const popup = document.querySelector('.popup.show');
-    if(isEsc(evt)) {
-      evt.preventDefault();
-      hidePopup(popup);
+    if (isEsc(evt)) {
+        evt.preventDefault();
+        hidePopup(popup);
     }
-  }
+}
 
 const handleSideClick = (evt) => {
     const popup = evt.target;
@@ -56,10 +56,10 @@ const isTheRightPeriod = (min, max) => {
     const now = new Date(Date.now())
     const nowMs = now.getTime();
 
-    if (min === 0) {    
+    if (min === 0) {
         min = nowMs - 60000;
     }
-    
+
     if (max === 0) {
         max = now;
         max.setFullYear(max.getFullYear() + 1000)
@@ -69,4 +69,25 @@ const isTheRightPeriod = (min, max) => {
     return (now >= min && now <= max);
 }
 
-export {hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick}
+const isTheRightDayTime = (dayTime) => {
+    const time = dayTime.split('-');
+    const min = time[0].split(':');
+    const max = time[1].split(':');
+    const now = new Date();
+    const start = new Date();
+    const end = new Date();
+    start.setHours(min[0], min[1]);
+    end.setHours(max[0], max[1]);
+    if (max[0] == "00") {
+        end.setDate(end.getDate() + 1);
+        console.log(end);
+    }
+    if (now.getTime() > start.getTime() && now.getTime() < end.getTime()) {
+        console.log('fits!')
+        return true;
+    }
+    console.log('does not fit (')
+    return false;
+}
+
+export { hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, isTheRightDayTime, handleEsc, handleSideClick, handleCloseBtnClick }

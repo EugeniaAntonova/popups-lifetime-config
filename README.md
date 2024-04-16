@@ -16,8 +16,10 @@ if not set, equals to now
 sets the time, when function will stop working for the given popup.
 if not set, equals to thousand years.
 
+- popup-period="(start hour:minute)-(end hour:minute)" , e.g. popup-period="12:00-14:00" - only from 12:00 to 14:00 will the popup be shown even if all the rest of conditions satisfied
+
 E.g.: popup with the following set of atributes 
 
-'''popup-rest-time="3, 0, 0" popup-day="thu" popup-period-min="2024, 1, 1, 00:00" popup-period-max="2024, 2, 1, 00:00" '''
+'''popup-rest-time="3, 0, 0" popup-day="thu" popup-period-min="2024, 1, 1, 00:00" popup-period-max="2024, 2, 1, 00:00" popup-period="12:00-18:00"'''
 
-will be shown in january 2024 every thursday not more than once in three hours.
+will be shown in january 2024 every thursday from 12:00 till 18:00 not more than once in three hours.

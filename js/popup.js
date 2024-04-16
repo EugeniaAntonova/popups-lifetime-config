@@ -1,4 +1,4 @@
-import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick } from './utils.js';
+import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick, isTheRightDayTime } from './utils.js';
 
 const showPopup = (popup, restPopupTime) => {
     const cookie = popup.getAttribute('id');
@@ -23,16 +23,19 @@ const showPopup = (popup, restPopupTime) => {
 
 const popupConfig = (popup) => {
     const restTime = popup.getAttribute('popup-rest-time').split(', ');
-    const restPopupTime = getRestPopupTime(restTime);
+    const restPopupTime = restTime ? getRestPopupTime(restTime) : 0;
 
     const day = popup.getAttribute('popup-day');
     const rightDay = !day ? !isTargetDay(day) : isTargetDay(day);
+
+    const dayTime = popup.getAttribute('popup-daytime');
+    const rightDayTime = !dayTime ? true : isTheRightDayTime(dayTime)
 
     let min = (new Date(popup.getAttribute('popup-period-min'))).getTime();
     let max = (new Date(popup.getAttribute('popup-period-max'))).getTime();
     const fitInPeriod = isTheRightPeriod(min, max);
 
-    rightDay && fitInPeriod ? setTimeout(() => { showPopup(popup, restPopupTime) }, 300) : console.log('not this time, popup')
+    rightDay && fitInPeriod && rightDayTime ? setTimeout(() => { showPopup(popup, restPopupTime) }, 300) : console.log('not this time, popup')
 }
 
 const touchPopups = () => {
