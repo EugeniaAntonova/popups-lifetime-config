@@ -10,7 +10,6 @@ const configMobilePopups = () => {
             item.classList.add('p-popup');
         })
     }
-    // console.log({isMobile, isBigIpad, minDimention});
 }
 
 export default configMobilePopups;

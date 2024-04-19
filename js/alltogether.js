@@ -162,8 +162,8 @@ const onSuccess = (who, cb) => {
     cb()
   }
   
-  const onFail = (what) => {
-    console.log(what);
+  const onFail = (error) => {
+    console.log(error);
   }
   const getData = async (onSuccess, onFail, cb) => {
     try {

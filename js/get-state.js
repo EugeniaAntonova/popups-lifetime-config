@@ -1,5 +1,5 @@
-const onSuccess = (who, cb) => {
-    const {email, bonus, dataReg, balance, canWithdraw } = who;
+const onSuccess = (user, callBack) => {
+    const {email, bonus, dataReg, balance, canWithdraw } = user;
 
     const getDateDiff = () => {
         const arr = dataReg.split(' ');
@@ -28,27 +28,24 @@ const onSuccess = (who, cb) => {
     if (balance + canWithdraw === 0 && bonus < 200 && daysFromReg < 7) {
         const pPopup = document.querySelector('#twenty-popup');
         pPopup.classList.add('p-popup');
-        pPopup.setAttribute('popup-rest-time', '24, 0, 0');        
-        cb();        
+        pPopup.setAttribute('popup-rest-time', '24, 0, 0');               
     } else if (balance + canWithdraw < 200 && daysFromReg > 7 && daysFromReg < 30) {
         const pPopup = document.querySelector('#fifteen-popup');
         pPopup.classList.add('p-popup');
-        pPopup.setAttribute('popup-rest-time', `${3*24}, 0, 0`);        
-        cb();       
+        pPopup.setAttribute('popup-rest-time', `${3*24}, 0, 0`);              
     } else if (balance + canWithdraw < 200 && daysFromReg > 30) {
         const pPopup = document.querySelector('#ten-popup');
         pPopup.classList.add('p-popup');
-        pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);          
-        cb();  
+        pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);           
     }
 
-    cb()
+    callBack()
   }
   
-  const onFail = (err) => {
-    console.log(err);
+  const onFail = (error) => {
+    console.log(error);
   }
-  const getData = async (onSuccess, onFail, cb) => {
+  const getData = async (onSuccess, onFail, callBack) => {
     try {
       const response = await fetch(
         // 'https://rpo.logycom.kz/tm/threemen.dll/srvNew?srv=rShortInfo',
@@ -60,7 +57,7 @@ const onSuccess = (who, cb) => {
       }
   
       const user = await response.json();
-      onSuccess(user, cb);
+      onSuccess(user, callBack);
     } catch (error) {
       onFail(error.message);
     }

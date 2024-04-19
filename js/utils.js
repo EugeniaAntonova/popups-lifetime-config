@@ -80,13 +80,10 @@ const isTheRightDayTime = (dayTime) => {
     end.setHours(max[0], max[1]);
     if (max[0] == "00") {
         end.setDate(end.getDate() + 1);
-        console.log(end);
     }
     if (now.getTime() > start.getTime() && now.getTime() < end.getTime()) {
-        console.log('fits!')
         return true;
     }
-    console.log('does not fit (')
     return false;
 }
 

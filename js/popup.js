@@ -3,7 +3,7 @@ import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, 
 const showPopup = (popup, restPopupTime) => {
     const cookie = popup.getAttribute('id');
     const isShown = getCookie(cookie);
-    const block = getCookie('already');
+    const blocked = getCookie('already');
 
     const configAndShow = (cookie, restPopupTime, pPopup) => {
         document.cookie = `${cookie}=shown;max-age=${restPopupTime}`;
@@ -16,7 +16,7 @@ const showPopup = (popup, restPopupTime) => {
         window.addEventListener('keydown', handleEsc);
 
     }
-    if (!isShown && !block) {
+    if (!isShown && !blocked) {
         configAndShow(cookie, restPopupTime, popup);
     } 
 }
