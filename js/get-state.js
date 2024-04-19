@@ -19,11 +19,11 @@ const onSuccess = (user, callBack) => {
 
     const daysFromReg = getDateDiff();
 
-    if (!email) {
-        const pPopup = document.querySelector('#email-popup');
-        pPopup.classList.add('p-popup');
-        pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);
-    }
+    // if (!email) {
+    //     const pPopup = document.querySelector('#email-popup');
+    //     pPopup.classList.add('p-popup');
+    //     pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);
+    // }
 
     if (balance + canWithdraw === 0 && bonus < 200 && daysFromReg < 7) {
         const pPopup = document.querySelector('#twenty-popup');

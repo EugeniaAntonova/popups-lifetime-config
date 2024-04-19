@@ -1,4 +1,4 @@
-import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick, isTheRightDayTime } from './utils.js';
+import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick, isTheRightDayTime, isMobileDevice } from './utils.js';
 
 const showPopup = (popup, restPopupTime) => {
     const cookie = popup.getAttribute('id');
@@ -35,7 +35,11 @@ const popupConfig = (popup) => {
     let max = (new Date(popup.getAttribute('popup-period-max'))).getTime();
     const fitInPeriod = isTheRightPeriod(min, max);
 
-    rightDay && fitInPeriod && rightDayTime ? setTimeout(() => { showPopup(popup, restPopupTime) }, 300) : console.log('not this time, popup')
+    let isForMobilesOnly = /p-mobile-only/i.test(popup.classList);
+    const rightDevice = isForMobilesOnly ? isMobileDevice() : true;
+    console.log({popup, isForMobilesOnly, rightDevice});
+
+    rightDay && fitInPeriod && rightDayTime && rightDevice ? setTimeout(() => { showPopup(popup, restPopupTime) }, 300) : console.log('not this time, popup')
 }
 
 const touchPopups = () => {
