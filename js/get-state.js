@@ -67,5 +67,3 @@ const onSuccess = (who, cb) => {
   };
 
   export {getData, onSuccess, onFail}
-  
-//   getData(onSuccess, onFail);

@@ -90,4 +90,5 @@ const isTheRightDayTime = (dayTime) => {
     return false;
 }
 
+
 export { hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, isTheRightDayTime, handleEsc, handleSideClick, handleCloseBtnClick }
