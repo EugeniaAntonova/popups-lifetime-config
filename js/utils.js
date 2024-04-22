@@ -88,14 +88,22 @@ const isTheRightDayTime = (dayTime) => {
 }
 
 const isMobileDevice = () => {
-    const reMobiles = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Touch|pixel/i;
+    const reMobiles = /webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Touch|pixel/i;
     const reMac = /Macintosh/i;
+
+    const test = navigator.userAgent;
+
     const isMobile = reMobiles.test(navigator.userAgent);
     const isBigIpad = reMac.test(navigator.userAgent) && navigator.maxTouchPoints > 0;
     const isSmall = Math.max(window.innerHeight, window.innerWidth) <= 1600 && navigator.maxTouchPoints > 0;
-    console.log({isMobile, isBigIpad, isSmall});
+    console.log({isMobile, isBigIpad, isSmall, test});
     return isMobile || isBigIpad || isSmall;
 }
 
+const NEVER = 60 * 60 * 24 * 30 * 1.5;
 
-export { hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, isTheRightDayTime, handleEsc, handleSideClick, handleCloseBtnClick, isMobileDevice }
+const doNotShow = (cookie, time) => {
+    document.cookie = `${cookie}=shown;max-age=${time}`;
+}
+
+export { hidePopup, getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, isTheRightDayTime, handleEsc, handleSideClick, handleCloseBtnClick, isMobileDevice, NEVER, doNotShow }

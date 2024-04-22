@@ -1,4 +1,4 @@
-import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick, isTheRightDayTime, isMobileDevice, NEVER } from './utils.js';
+import { getCookie, getRestPopupTime, isTargetDay, isTheRightPeriod, handleEsc, handleSideClick, handleCloseBtnClick, isTheRightDayTime, isMobileDevice, NEVER, doNotShow } from './utils.js';
 
 const showPopup = (popup, restPopupTime) => {
     const cookie = popup.getAttribute('id');
@@ -11,7 +11,19 @@ const showPopup = (popup, restPopupTime) => {
         pPopup.classList.add('show');
 
         const closeButton = pPopup.querySelector('.p-close-btn');
-        closeButton.addEventListener('click', handleCloseBtnClick)
+        closeButton.addEventListener('click', handleCloseBtnClick);
+        const showNoMoreCheck = pPopup.querySelector('.p-show-no-more') || false;
+        if (showNoMoreCheck) {
+            const onshowNoMoreChecked = (evt) => {
+                const check  = evt.target;
+                const currentCookie = cookie;
+                const time = NEVER;
+                if (check.checked) {
+                    doNotShow(currentCookie, time);
+                }
+            }
+            showNoMoreCheck.addEventListener('change', onshowNoMoreChecked);
+        }
         pPopup.addEventListener('click', handleSideClick);
         window.addEventListener('keydown', handleEsc);
 

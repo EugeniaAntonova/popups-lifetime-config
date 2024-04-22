@@ -48,7 +48,7 @@ const onSuccess = (user, callBack) => {
   const getData = async (onSuccess, onFail, callBack) => {
     try {
       const response = await fetch(
-        // 'https://rpo.logycom.kz/tm/threemen.dll/srvNew?srv=rShortInfo',
+        // 'https://sz.kz/srvNew?srv=rShortInfo',
         '/data.json'
       );
   
