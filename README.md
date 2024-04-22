@@ -26,7 +26,7 @@ will be shown in january 2024 every thursday from 12:00 till 18:00 not more than
 
 basic markup: 
         <section 
-        class="popup app mobile-p-popup" 
+        class="popup app mobile-p-popup p-popup" 
         popup-rest-time="3, 0, 0" 
         id="app"
         [ popup-day="thu" popup-period-min="2024, 1, 1, 00:00" popup-period-max="2024, 2, 1, 00:00" popup-period="12:00-18:00" ]>
@@ -35,9 +35,14 @@ basic markup:
                 <div class="decor"></div>
                 <div class="content">
                     <h2 class="visually-hidden"></h2>
-                    <div class="descr">
+                    <div class="descr"></div>
+                    <div class="check-wrapper">
+                        <input type="checkbox" name="already-seen" id="seen-check" class="visually-hidden p-show-no-more">
+                        <label for="seen-check" class="p-popup-check-label">
+                            Don`t show again
+                        </label>
                     </div>
-                    <a href="#" class="p-action-button">T</a>
+                    <a href="#" class="p-action-button"></a>
                 </div>
             </article>
         </section>
