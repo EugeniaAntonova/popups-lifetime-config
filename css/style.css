@@ -87,9 +87,12 @@ body {
     transition: filter .3s ease-in-out;
 }
 
-.p-close-btn:hover,
-.p-close-btn:focus-visible {
-    filter: brightness(1.5);
+@media (hover: hover) {
+
+    .p-close-btn:hover,
+    .p-close-btn:focus-visible {
+        filter: brightness(1.5);
+    }
 }
 
 .p-close-btn:active {
@@ -115,15 +118,18 @@ body {
     transition: background-color .3s ease-in-out;
 }
 
-.p-action-button:hover, 
-.p-action-button:focus-visible {
-    background-color: #4b7cda;
-    color: #fff;
+@media (hover: hover) {
+
+    .p-action-button:hover,
+    .p-action-button:focus-visible {
+        background-color: #4b7cda;
+        color: #fff;
+    }
 }
 
 .p-action-button:active {
-   background-color: #082969;
-   color: #f9f9f9;
+    background-color: #082969;
+    color: #f9f9f9;
 }
 
 .popup.show {
@@ -143,6 +149,39 @@ body {
     animation-iteration-count: 1;
 }
 
+.p-popup-check-label {
+    margin-bottom: 1em;
+    padding-block: .5em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.p-popup-check-label::before {
+    content: "";
+    display: inline-block;
+    width: 1.5ch;
+    height: 1.5ch;
+    margin-right: 0.75ch;
+    border: 1px solid #1249B5;
+    background-size: 80% 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: .3s ease-in-out;
+    transition-property: background-color, background-image;
+}
+
+@media (hover: hover) {
+    .p-popup-check-label:hover::before {
+        border-color: #4b7cda;
+        background-color: rgba(18 73 181 / 0.1);
+    }
+}
+
+input[type="checkbox"]:checked+label::before {
+    background-color: #1249B5;
+    background-image: url("data:image/svg+xml,%3Csvg width='98' height='101' viewBox='0 0 98 101' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M94.93 16.446C38.798 125.888 21.492 118.509 1.15 54.186c-3.38-10.685 11.269-17.014 14.322-6.685C33.5 108.5 50 54.186 81.5 7c8.112-12.152 20.586-4.507 13.43 9.445Z' fill='%23fff'/%3E%3C/svg%3E");
+}
 
 @media (min-width: 850px) {
     .popup {
@@ -187,9 +226,9 @@ body {
     100% {
         transform: translateY(0);
     }
-  }
+}
 
-  @keyframes bounce-in-top {
+@keyframes bounce-in-top {
     0% {
         transform: translateY(-1000px);
         animation-timing-function: ease-in;
