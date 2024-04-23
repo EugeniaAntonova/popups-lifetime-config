@@ -17,9 +17,15 @@ const showPopup = (popup, restPopupTime) => {
             const onshowNoMoreChecked = (evt) => {
                 const check  = evt.target;
                 const currentCookie = cookie;
-                const time = NEVER;
+                let time;
                 if (check.checked) {
+                    time = NEVER;
                     doNotShow(currentCookie, time);
+                    return;
+                } else {
+                    time = restPopupTime;
+                    doNotShow(currentCookie, time);
+                    return;
                 }
             }
             showNoMoreCheck.addEventListener('change', onshowNoMoreChecked);

@@ -18,3 +18,8 @@
     background-image: url('./assets/img/TB.png');
     border: none;
 }
+.sfn article .decor {
+    background-size: cover;
+    background-image: url('./assets/img/649.png');
+    border: none;
+}
