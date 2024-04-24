@@ -23,3 +23,8 @@
     background-image: url('./assets/img/649.png');
     border: none;
 }
+.app article .decor {
+    background-size: cover;
+    background-image: url('./assets/app.png');
+    border: none;
+}
