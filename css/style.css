@@ -137,7 +137,7 @@ body {
     transform: scale(1);
     visibility: visible;
     opacity: 1;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .popup.show article {
