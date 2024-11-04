@@ -8,7 +8,8 @@ body {
     margin: 0;
 }
 
-.visually-hidden {
+.visually-hidden,
+input[type="checkbox"].visually-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -22,27 +23,26 @@ body {
     overflow: hidden;
 }
 
-.popup {
+.p-style-popup {
     position: fixed;
     inset: 0;
-    z-index: 105;
+    z-index: 101;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    font-family: "Inter", sans-serif;
-    background-color: rgba(0, 0, 0, 0.7);
-
+    font-family: "Nunito", sans-serif;
+    background-color: rgba(0, 0, 0, 0.8);
     transform: scale(0);
     visibility: hidden;
     opacity: 0;
     transition: opacity .5s ease;
 }
 
-.popup article {
+.p-style-popup article {
     width: 100%;
     max-width: 400px;
-    padding-bottom: 64px;
+    padding-bottom: 74px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@ body {
     background-color: #fff;
 }
 
-.popup article .decor {
+.p-style-popup article .decor {
     height: 223px;
     width: 100%;
     margin-bottom: 24px;
@@ -59,19 +59,18 @@ body {
     border-radius: 32px 32px 0 0;
 }
 
-.popup article .content {
+.p-style-popup article .content {
     padding: 0 16px;
 }
 
-.popup article .descr {
+.p-style-popup article .descr {
     margin: 0;
-    margin-bottom: 34px;
-    padding-right: 16px;
+    margin-bottom: 24px;
     font-size: 18px;
     line-height: 122%;
 }
 
-.p-close-btn {
+.p-cross-btn {
     background-color: transparent;
     border: none;
     position: absolute;
@@ -89,32 +88,34 @@ body {
 
 @media (hover: hover) {
 
-    .p-close-btn:hover,
-    .p-close-btn:focus-visible {
+    .p-cross-btn:hover,
+    .p-cross-btn:focus-visible {
         filter: brightness(1.5);
     }
 }
 
-.p-close-btn:active {
+.p-cross-btn:active {
     filter: brightness(0.7);
 }
 
 .p-action-button {
     display: block;
-    text-decoration: none;
+    width: 100%;
     padding: 20px 24px;
     border: none;
-    outline-color: #1249B5;
-    outline-offset: 4px;
-    border-radius: 12px;
+    text-decoration: none;
     color: #fff;
-    background-color: #1249B5;
+    font-family: 'Nunito', 'Inter', sans-serif;
     font-size: 14px;
     line-height: normal;
     font-weight: 700;
     letter-spacing: 0.28px;
     text-transform: uppercase;
     text-align: center;
+    outline-color: #1249B5;
+    outline-offset: 4px;
+    border-radius: 12px;
+    background-color: #1249B5;
     transition: background-color .3s ease-in-out;
 }
 
@@ -128,11 +129,11 @@ body {
 }
 
 .p-action-button:active {
-    background-color: #082969;
-    color: #f9f9f9;
+   background-color: #082969;
+   color: #f9f9f9;
 }
 
-.popup.show {
+.p-style-popup.show {
     perspective: 1500px;
     transform: scale(1);
     visibility: visible;
@@ -140,7 +141,7 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.popup.show article {
+.p-style-popup.show article {
     transform-style: preserve-3d;
     animation-name: slide-up;
     animation-duration: 1s;
@@ -150,7 +151,7 @@ body {
 }
 
 .p-popup-check-label {
-    margin-top: 1em;
+    margin-bottom: 1em;
     padding-block: .5em;
     display: flex;
     align-items: center;
@@ -184,30 +185,30 @@ input[type="checkbox"]:checked+label::before {
 }
 
 @media (min-width: 850px) {
-    .popup {
+    .p-style-popup {
         justify-content: center;
     }
 
-    .popup article {
+    .p-style-popup article {
         border-radius: 32px;
     }
 
-    .popup article .content {
+    .p-style-popup article .content {
         padding: 0 24px;
     }
 
-    .popup article .descr {
+    .p-style-popup article .descr {
         font-size: 20px;
     }
 
-    .p-close-btn {
+    .p-cross-btn {
         width: 24px;
         height: 24px;
         top: 0;
         right: -32px;
     }
 
-    .popup.show article {
+    .p-style-popup.show article {
         padding-bottom: 40px;
         animation-name: bounce-in-top;
         animation-duration: 1.5s;
@@ -226,9 +227,9 @@ input[type="checkbox"]:checked+label::before {
     100% {
         transform: translateY(0);
     }
-}
+  }
 
-@keyframes bounce-in-top {
+  @keyframes bounce-in-top {
     0% {
         transform: translateY(-1000px);
         animation-timing-function: ease-in;

@@ -10,7 +10,7 @@ const hidePPopup = (popup) => {
 const isEsc = (evt) => evt.key === 'Escape';
 
 function handleEsc (evt) {
-    const popup = document.querySelector('.popup.show');
+    const popup = document.querySelector('.custom-popup.show');
     if(isEsc(evt)) {
       evt.preventDefault();
       hidePPopup(popup);
@@ -18,12 +18,15 @@ function handleEsc (evt) {
   }
 
 const handleSideClick = (evt) => {
-    const popup = evt.target;
-    hidePPopup(popup);
+    if (evt.target.tagName === 'SECTION' && evt.target.classList.contains('p-popup')) {
+        const popup = evt.target;
+        hidePPopup(popup);
+    }
+    return;
 }
 
 const handleCloseBtnClick = () => {
-    const popup = document.querySelector('.popup.show');
+    const popup = document.querySelector('.custom-popup.show');
     hidePPopup(popup);
 }
 
@@ -71,6 +74,57 @@ const isTheRightPeriod = (min, max) => {
     return (now >= min && now <= max);
 }
 
+const isTheRightDayTime = (dayTime) => {
+    const time = dayTime.split('-');
+    const min = time[0].split(':');
+    const max = time[1].split(':');
+    const now = new Date();
+    const start = new Date();
+    const end = new Date();
+    start.setHours(min[0], min[1]);
+    end.setHours(max[0], max[1]);
+    if (max[0] == "00") {
+        end.setDate(end.getDate() + 1);
+    }
+    if (now.getTime() > start.getTime() && now.getTime() < end.getTime()) {
+        return true;
+    }
+    return false;
+}
+
+const isItMobileDevice = () => {
+    const reMobiles = /webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Touch|pixel/i;
+    const reMac = /Macintosh/i;
+
+    const isMobile = reMobiles.test(navigator.userAgent);
+    const isBigIpad = reMac.test(navigator.userAgent) && navigator.maxTouchPoints > 0;
+    const isSmall = Math.max(window.innerHeight, window.innerWidth) <= 1600 && navigator.maxTouchPoints > 0;
+
+    return isMobile || isBigIpad || isSmall;
+}
+// const isItMobileDevice = () => {
+//     const reMobiles = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Touch|pixel/i;
+//     const reMac = /Macintosh/i;
+//     const agent = navigator.userAgent;
+    
+//     const isMobile = reMobiles.test(agent);
+    
+//     const isBigIpad = reMac.test(agent) && navigator.maxTouchPoints > 0;
+    
+//     const isSmall = Math.max(window.innerHeight, window.innerWidth) <= 1600 && navigator.maxTouchPoints > 0;
+    
+//     const hasCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+//     return isMobile || isBigIpad || isSmall || hasCoarsePointer;
+// };
+
+const NEVER = 60 * 60 * 24 * 30 * 1.5;
+
+const doNotShow = (cookie, time) => {
+    document.cookie = `${cookie}=shown;max-age=${time}`;
+}
+
+
 // ===============================================  popups
 
 const showPPopup = (popup, restPopupTime) => {
@@ -84,7 +138,25 @@ const showPPopup = (popup, restPopupTime) => {
         pPopup.classList.add('show');
 
         const closeButton = pPopup.querySelector('.p-close-btn');
-        closeButton.addEventListener('click', handleCloseBtnClick)
+        closeButton.addEventListener('click', handleCloseBtnClick);
+        const showNoMoreCheck = pPopup.querySelector('.p-show-no-more') || false;
+        if (showNoMoreCheck) {
+            const onshowNoMoreChecked = (evt) => {
+                const check  = evt.target;
+                const currentCookie = cookie;
+                let time;
+                if (check.checked) {
+                    time = NEVER;
+                    doNotShow(currentCookie, time);
+                    return;
+                } else {
+                    time = restPopupTime;
+                    doNotShow(currentCookie, time);
+                    return;
+                }
+            }
+            showNoMoreCheck.addEventListener('change', onshowNoMoreChecked);
+        }
         pPopup.addEventListener('click', handleSideClick);
         window.addEventListener('keydown', handleEsc);
 
@@ -101,11 +173,18 @@ const pPopupConfig = (popup) => {
     const day = popup.getAttribute('popup-day');
     const rightDay = !day ? !isTargetDay(day) : isTargetDay(day);
 
+    const dayTime = popup.getAttribute('popup-daytime');
+    const rightDayTime = !dayTime ? true : isTheRightDayTime(dayTime)
+
     let min = (new Date(popup.getAttribute('popup-period-min'))).getTime();
     let max = (new Date(popup.getAttribute('popup-period-max'))).getTime();
     const fitInPeriod = isTheRightPeriod(min, max);
 
-    rightDay && fitInPeriod ? setTimeout(() => { showPPopup(popup, restPopupTime) }, 0) : console.log('not this time, popup')
+    
+    let isForMobilesOnly = /p-mobile-only/i.test(popup.classList);
+    const rightDevice = isForMobilesOnly ? isItMobileDevice() : true;
+
+    rightDay && fitInPeriod && rightDayTime && rightDevice ? setTimeout(() => { showPPopup(popup, restPopupTime) }, 0) : console.log('not this time, popup', popup.id);
 }
 
 const touchPopups = () => {
@@ -115,8 +194,8 @@ const touchPopups = () => {
 
 // ==============================================================  get state
 
-const onSuccess = (who, cb) => {
-    const {email, bonus, dataReg, balance, canWithdraw } = who;
+const onSuccess = (user, cb) => {
+    const {email, bonus, dataReg, balance, canWithdraw } = user;
 
     const getDateDiff = () => {
         const arr = dataReg.split(' ');
@@ -136,24 +215,24 @@ const onSuccess = (who, cb) => {
 
     const daysFromReg = getDateDiff();
 
-    if (!email) {
-        const pPopup = document.querySelector('#email-popup');
-        pPopup.classList.add('p-popup');
-        pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);
-    }
+    // if (!email) {
+    //     const pPopup = document.querySelector('#email-popup');
+    //     pPopup.classList.add('p-popup');
+    //     pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);
+    // }
 
-    if (balance + canWithdraw === 0 && bonus < 200 && daysFromReg < 10) {
-        const pPopup = document.querySelector('#twenty-popup');
+    if (balance + canWithdraw === 0 && bonus < 200 && daysFromReg < 7) {
+        const pPopup = document.querySelector('.js-twenty-popup');
         pPopup.classList.add('p-popup');
         pPopup.setAttribute('popup-rest-time', '24, 0, 0');        
         cb();        
-    } else if (balance + canWithdraw < 200 && daysFromReg > 10 && daysFromReg < 60) {
-        const pPopup = document.querySelector('#fifteen-popup');
+    } else if (balance + canWithdraw < 200 && daysFromReg > 7 && daysFromReg < 30) {
+        const pPopup = document.querySelector('.js-fifteen-popup');
         pPopup.classList.add('p-popup');
         pPopup.setAttribute('popup-rest-time', `${3*24}, 0, 0`);        
         cb();       
-    } else if (balance + canWithdraw < 200 && daysFromReg > 60) {
-        const pPopup = document.querySelector('#ten-popup');
+    } else if (balance + canWithdraw < 200 && daysFromReg > 30) {
+        const pPopup = document.querySelector('.js-ten-popup');
         pPopup.classList.add('p-popup');
         pPopup.setAttribute('popup-rest-time', `${5*24}, 0, 0`);          
         cb();  
@@ -169,9 +248,9 @@ const onSuccess = (who, cb) => {
     try {
       const response = await fetch(
         // 'https://rpo.logycom.kz/tm/threemen.dll/srvNew?srv=rShortInfo',
-        // './data.json'
+        './data.json'
         // 'https://static.sz.kz/test/json.php'
-        'https://sz.kz/srvNew?srv=rShortInfo'
+        // 'https://sz.kz/srvNew?srv=rShortInfo'
       );
   
       if (!response.ok) {

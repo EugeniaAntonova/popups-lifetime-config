@@ -3,7 +3,7 @@
 }
 
 .my-popup.email .decor {
-    background-image: url('./assets/img/mail.png');
+    background-image: url('../assets/img/mail.png');
 }
 
 .my-popup.email form {

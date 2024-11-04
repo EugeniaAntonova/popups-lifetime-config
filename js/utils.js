@@ -8,7 +8,7 @@ const hidePopup = (popup) => {
 const isEsc = (evt) => evt.key === 'Escape';
 
 function handleEsc(evt) {
-    const popup = document.querySelector('.popup.show');
+    const popup = document.querySelector('.p-popup.show');
     if (isEsc(evt)) {
         evt.preventDefault();
         hidePopup(popup);
@@ -16,12 +16,14 @@ function handleEsc(evt) {
 }
 
 const handleSideClick = (evt) => {
-    const popup = evt.target;
-    hidePopup(popup);
+    if (evt.target.tagName === 'SECTION' && evt.target.classList.contains('p-popup')) {
+        const popup = evt.target;
+        hidePopup(popup);
+    }
 }
 
 const handleCloseBtnClick = () => {
-    const popup = document.querySelector('.popup.show');
+    const popup = document.querySelector('.p-popup.show');
     hidePopup(popup);
 }
 
@@ -96,9 +98,24 @@ const isMobileDevice = () => {
     const isMobile = reMobiles.test(navigator.userAgent);
     const isBigIpad = reMac.test(navigator.userAgent) && navigator.maxTouchPoints > 0;
     const isSmall = Math.max(window.innerHeight, window.innerWidth) <= 1600 && navigator.maxTouchPoints > 0;
-    console.log({isMobile, isBigIpad, isSmall, test});
     return isMobile || isBigIpad || isSmall;
 }
+
+// const isItMobileDevice = () => {
+//     const reMobiles = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Touch|pixel/i;
+//     const reMac = /Macintosh/i;
+//     const agent = navigator.userAgent;
+    
+//     const isMobile = reMobiles.test(agent);
+    
+//     const isBigIpad = reMac.test(agent) && navigator.maxTouchPoints > 0;
+    
+//     const isSmall = Math.max(window.innerHeight, window.innerWidth) <= 1600 && navigator.maxTouchPoints > 0;
+    
+//     const hasCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+//     return isMobile || isBigIpad || isSmall || hasCoarsePointer;
+// };
 
 const NEVER = 60 * 60 * 24 * 30 * 1.5;
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/email.css">
     <link rel="stylesheet" href="./css/cashback.css">
+    <link rel="stylesheet" href="./css/app-popup.css">
 </head>
 
 <body>
@@ -15,9 +16,27 @@
 
     </header>
     <main class="page">
-        <section class="my-popup email popup" id="email-popup">
+        
+<section class="custom-popup p-style-popup juma20 p-popup" popup-rest-time="0, 0, 0" id="juma20">
+    <article>
+        <button type="button" class="my-close-btn p-cross-btn p-close-btn"
+            aria-label="закрыть всплывающее окно"></button>
+        <div class="decor"></div>
+        <div class="content" style="text-align: center;">
+            <h2 class="visually-hidden">20% Бонусов за пополнение кошелька Satty Zhuldyz</h2>
+            <div class="descr" style="text-align: center;">
+                С&nbsp;27-29&nbsp;сентября, используйте промокод <strong>JYMA20</strong> и&nbsp;получите
+                20%&nbsp;Бонусов за&nbsp;пополнение кошелька Satty&nbsp;Zhuldyz.<br><br>
+                Выберите при&nbsp;пополнении кнопку &quot;оплата банковской картой&quot; со стикером <br><strong>&quot;+20%
+                BONUS&quot;</strong>.
+            </div>
+            <a href="/login?back=profile&promocode=JYMA20" class="p-action-button">Активировать промокод</a>
+        </div>
+    </article>
+</section>
+        <section class="my-popup email p-style-popup" id="email-popup">
             <article>
-                <button type="button" class="my-close-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
                 <h2 class="visually-hidden">Заполните поле электронной почты в личном кабинете</h2>
                 <div class="decor"></div>
                 <div class="content">
@@ -36,9 +55,9 @@
                 </div>
             </article>
         </section>
-        <section class="my-popup twenty-percent popup" id="twenty-popup">
+        <section class="my-popup twenty-percent p-style-popup" id="twenty-popup">
             <article>
-                <button type="button" class="my-close-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
                 <div class="decor"></div>
                 <div class="content">
                     <h2 class="visually-hidden">Промокод 20% Бонусов за пополнение</h2>
@@ -52,9 +71,9 @@
                 </div>
             </article>
         </section>
-        <section class="popup fifteen-percent" id="fifteen-popup">
+        <section class="p-style-popup fifteen-percent" id="fifteen-popup">
             <article>
-                <button type="button" class="my-close-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
                 <div class="decor"></div>
                 <div class="content">
                     <h2 class="visually-hidden">Промокод 15% Бонусов за пополнение</h2>
@@ -68,9 +87,9 @@
                 </div>
             </article>
         </section>
-        <section class="popup ten-percent" id="ten-popup">
+        <section class="p-style-popup ten-percent" id="ten-popup">
             <article>
-                <button type="button" class="my-close-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
                 <div class="decor"></div>
                 <div class="content">
                     <h2 class="visually-hidden">Промокод 5% Бонусов за пополнение</h2>
@@ -84,10 +103,10 @@
             </article>
         </section>
 
-        <section class="popup tb p-popup" popup-rest-time="6, 0, 0" popup-period-min="2024, 4, 11, 00:00"
+        <section class="p-style-popup tb p-popup" popup-rest-time="6, 0, 0" popup-period-min="2024, 4, 11, 00:00"
             popup-period-max="2024, 4, 18, 9:00" popup-daytime="12:00-00:00" id="tb">
             <article>
-                <button type="button" class="my-close-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
                 <div class="decor"></div>
                 <div class="content">
                     <h2 class="visually-hidden">Выиграйте квартиру 14&nbsp;апреля!</h2>
@@ -101,9 +120,9 @@
                 </div>
             </article>
         </section>
-        <section class="popup sfn p-popup" popup-rest-time="24, 0, 0" popup-period-min="2024, 4, 23, 00:00" popup-period-max="2024, 4, 26, 21:30" id="sfn">
+        <section class="p-style-popup sfn p-popup" popup-rest-time="24, 0, 0" popup-period-min="2024, 4, 23, 00:00" popup-period-max="2024, 4, 26, 21:30" id="sfn">
             <article>
-                <button type="button" class="my-close-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
                 <div class="decor"></div>
                 <div class="content" style="text-align: center;">
                     <h2 class="visually-hidden">Выиграйте кроссовер 26 апреля!</h2>
@@ -116,26 +135,22 @@
             </article>
         </section>
 
-        <section class="popup app p-popup p-mobile-only" popup-rest-time="0, 0, 0" id="app">
+        <section class="p-style-popup app p-popup p-mobile-only" popup-rest-time="24, 0, 0" id="app">
             <article>
-                <button type="button" class="my-close-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
                 <div class="decor"></div>
                 <div class="content">
-                    <h2 class="visually-hidden">Download the app!</h2>
-                    <div class="descr">
-                        Установите наше новое приложение
+                    <h2 class="visually-hidden">Установите мобильное приложение Сатти Жулдыз</h2>
+                    <div class="descr" style="text-align: left;">
+                        <b style="line-height: 1.35; font-size: 24px; display: inline-block; margin-bottom: 1ch;">Приложение Satty&nbsp;Zhuldyz</b><br>Узнавайте о&nbsp;выигрышах и специальных акциях в&nbsp;приложении!
                     </div>
-                    <a href="https://sz.kz/redirect" class="p-action-button">В магазин!</a>
-                    <div class="check-wrapper">
-                        <input type="checkbox" name="already-seen" id="seen-check" class="visually-hidden p-show-no-more">
-                        <label for="seen-check" class="p-popup-check-label">
-                            Больше не показывать
-                        </label>
-                    </div>
+                    <a href="https://sz.kz/redirect" class="p-action-button js-application-download-link">Скачать приложение</a>
+                    <button type="button" class="p-action-button p-close-btn secondary">Остаться на&nbsp;сайте</button>
                 </div>
             </article>
         </section>
+
     </main>
+    <footer class="footer"></footer>
     <script type="module" src="/js/main.js"></script>
     <!-- <script src="/js/alltogether.js"></script> -->
     <!-- <script src="/js/form.js"></script> -->
