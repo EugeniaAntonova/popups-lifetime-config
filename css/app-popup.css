@@ -1,0 +1,65 @@
+.app .p-action-button:where(.apple, .android) {
+    padding-top: 13px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.app .p-action-button:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+.app .p-action-button.secondary {
+    background-color: #fff;
+    color: #1249B5;
+    outline: 2px solid #1249B5;
+    outline-offset: -2px;
+    transition: color .2s ease-in-out, outline-color .2s ease-in-out;
+}
+
+.app .p-action-button.secondary:active {
+    color: #082969;
+    outline-color: #082969;
+    
+}
+
+.app .p-action-button.apple::before,
+.app .p-action-button.android::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: .5ch;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.app .p-action-button.android::before {
+    background-position: bottom center;
+    background-size: 22px 19px;
+}
+
+.app .p-action-button.apple::before {
+    background-image: url('../assets/img/icon-appstore.svg');
+}
+.app .p-action-button.android::before {
+    background-image: url('../assets/img/icon-android.svg');
+}
+
+.app.p-style-popup article{
+    padding-top: 60px;
+    border-radius: 24px 24px 0 0;
+}
+
+.app.p-style-popup article .decor {
+    position: absolute;
+    width: 317px;
+    height: 280px;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 24px;
+    translate: 0 -69%;
+    pointer-events: none;
+}

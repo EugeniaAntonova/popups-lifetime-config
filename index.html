@@ -1,107 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        *, 
-        *::before, 
-        *::after {
-            box-sizing: border-box;
-        }
-        /* .page {
-          position: relative;  
-        } */
-
-        .popup {
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            transform: scale(0);
-            pointer-events: none;
-            visibility: hidden;
-            transition: transform .5s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        } 
-
-        .popup article {
-            width: 300px;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 50px;
-            outline: 3px dashed tomato;
-            text-align: center;
-            font-family: sans-serif;
-            font-weight: 500;
-            color: rgba(0,0,0,0.8);
-            background-color: aliceblue;
-        }
-
-        .popup.show {
-            position: fixed;
-            transform: scale(1);
-            pointer-events: all;
-            visibility: visible;
-            background-color: rgba(0,0,0,0.3);
-
-        }
-
-        .popup b {
-            font-size: 1.2em;
-            font-weight: 700;
-        }
-
-        .header {
-            height: 80px;
-            outline: 1px solid tomato;
-            background-color: tomato;
-            margin-bottom: 15px;
-            background-size: 30px 30px;
-            background-image: linear-gradient(45deg, white 25%, transparent 0, transparent 50%, white 0, white 75%, transparent 0);
-        }
-
-        .section {
-            background-color: purple;
-            height: 700px;
-            outline: 1px solid purple;
-            background-size: 300px 300px;
-            background-image: linear-gradient(45deg, white 25%, transparent 0, transparent 50%, white 0, white 75%, transparent 0);            
-        }
-
-        .section:not(:last-of-type) {
-            margin-bottom: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/email.css">
+    <link rel="stylesheet" href="./css/cashback.css">
+    <link rel="stylesheet" href="./css/app-popup.css">
 </head>
+
 <body>
     <header class="header">
 
     </header>
     <main class="page">
-        <section class="section"></section>
-        <section class="section"></section>
-        <section class="popup" id="popup1" popup-rest-time="0, 0, 30" popup-period-min="2023, 12, 20">
+        
+<section class="custom-popup p-style-popup juma20 p-popup" popup-rest-time="0, 0, 0" id="juma20">
+    <article>
+        <button type="button" class="my-close-btn p-cross-btn p-close-btn"
+            aria-label="закрыть всплывающее окно"></button>
+        <div class="decor"></div>
+        <div class="content" style="text-align: center;">
+            <h2 class="visually-hidden">20% Бонусов за пополнение кошелька Satty Zhuldyz</h2>
+            <div class="descr" style="text-align: center;">
+                С&nbsp;27-29&nbsp;сентября, используйте промокод <strong>JYMA20</strong> и&nbsp;получите
+                20%&nbsp;Бонусов за&nbsp;пополнение кошелька Satty&nbsp;Zhuldyz.<br><br>
+                Выберите при&nbsp;пополнении кнопку &quot;оплата банковской картой&quot; со стикером <br><strong>&quot;+20%
+                BONUS&quot;</strong>.
+            </div>
+            <a href="/login?back=profile&promocode=JYMA20" class="p-action-button">Активировать промокод</a>
+        </div>
+    </article>
+</section>
+        <section class="my-popup email p-style-popup" id="email-popup">
             <article>
-                <h1>This popup <b>A</b> shows on reload once in <b>30&nbsp;sec</b></h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <h2 class="visually-hidden">Заполните поле электронной почты в личном кабинете</h2>
+                <div class="decor"></div>
+                <div class="content">
+                    <p class="descr">
+                        Подпишитесь на&nbsp;рассылку, чтобы первым узнавать о&nbsp;новостях лотерей, новых акциях
+                        и&nbsp;наших лучших предложениях.
+                    </p>
+                    <!-- <form action="/" method="post" class="newsletter-form">
+                        <div class="input-wrapper">
+                            <input type="email" name="email" id="email" required placeholder="Введите ваш email">
+                            <span class="error">Неправильный email</span>
+                        </div>
+                        <button type="submit" class="my-sbmt-btn p-action-button">подписаться</button>
+                    </form> -->
+                    <a href="/login?back=profile&promocode=PU2024" class="p-action-button">Подписаться</a>
+                </div>
+            </article>
+        </section>
+        <section class="my-popup twenty-percent p-style-popup" id="twenty-popup">
+            <article>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <div class="decor"></div>
+                <div class="content">
+                    <h2 class="visually-hidden">Промокод 20% Бонусов за пополнение</h2>
+                    <div class="descr">
+                        <!-- Satty Zhuldyz әмиянын толтырғаны үшін 20% Бонус болатын промокод. 10 000 Бонустан көп емес. -->
+                        Промокод на&nbsp;20% Бонусов за&nbsp;пополнение кошелька Satty Zhuldyz. Не&nbsp;более
+                        10&nbsp;000&nbsp;Бонусов.
+                    </div>
+                    <a href="/login?back=profile&promocode=MA2024"
+                        class="p-action-button">активировать&nbsp;промокод</a>
+                </div>
+            </article>
+        </section>
+        <section class="p-style-popup fifteen-percent" id="fifteen-popup">
+            <article>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <div class="decor"></div>
+                <div class="content">
+                    <h2 class="visually-hidden">Промокод 15% Бонусов за пополнение</h2>
+                    <div class="descr">
+                        <!-- Satty Zhuldyz әмияныңызды толтыруға арналған 15% бонустық промокоды. Толықтыру кезінде Halyk Bank банк картасымен төлеу түймесін таңдаңыз. 10 000 бонустан артық емес. -->
+                        Промокод на&nbsp;15% Бонусов за&nbsp;пополнение кошелька Satty Zhuldyz. Выберите при пополнении
+                        кнопку оплата банковской картой Halyk Bank. Не&nbsp;более 10&nbsp;000&nbsp;Бонусов.
+                    </div>
+                    <a href="/login?back=profile&promocode=MN1524"
+                        class="p-action-button">активировать&nbsp;промокод</a>
+                </div>
+            </article>
+        </section>
+        <section class="p-style-popup ten-percent" id="ten-popup">
+            <article>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <div class="decor"></div>
+                <div class="content">
+                    <h2 class="visually-hidden">Промокод 5% Бонусов за пополнение</h2>
+                    <div class="descr">
+                        <!-- Satty Zhuldyz әмияныңызды толтыруға арналған 5% бонустық промокоды. Толықтыру кезінде Halyk Bank банк картасымен төлеу түймесін таңдаңыз. 5 000 бонустан артық емес. -->
+                        Промокод на&nbsp;5%&nbsp;Бонусов за&nbsp;пополнение кошелька Satty Zhuldyz. Выберите при
+                        пополнении кнопку оплата банковской картой Halyk Bank. Не&nbsp;более 5&nbsp;000&nbsp;Бонусов.
+                    </div>
+                    <a href="/login?back=profile&promocode=MC524" class="p-action-button">активировать&nbsp;промокод</a>
+                </div>
             </article>
         </section>
 
-
-        <section class="popup" id="popup2" popup-rest-time="0, 0, 30" popup-day="wed" popup-period-max="2024, 12, 21, 15:30">
+        <section class="p-style-popup tb p-popup" popup-rest-time="6, 0, 0" popup-period-min="2024, 4, 11, 00:00"
+            popup-period-max="2024, 4, 18, 9:00" popup-daytime="12:00-00:00" id="tb">
             <article>
-                <h1>This popup <b>B</b> shows on reload once in <b>30&nbsp;sec</b></h1>
-                <button type="button" class="p-close-btn">dismiss</button>  
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <div class="decor"></div>
+                <div class="content">
+                    <h2 class="visually-hidden">Выиграйте квартиру 14&nbsp;апреля!</h2>
+                    <div class="descr">
+                        <!-- SZNABTB44 промокодын пайдаланыңыз және «Пәтер» ЛотоЖинағын сатып алғаныңыз үшін 350 Бонус алыңыз. -->
+                        Используйте промокод SZNABTB44 и&nbsp;получите 350 Бонусов за&nbsp;покупку ЛотоНабора
+                        &laquo;Квартира&raquo;.
+                    </div>
+                    <a href="/login?back=profile&promocode=SZNABTB44"
+                        class="p-action-button">активировать&nbsp;промокод</a>
+                </div>
             </article>
         </section>
+        <section class="p-style-popup sfn p-popup" popup-rest-time="24, 0, 0" popup-period-min="2024, 4, 23, 00:00" popup-period-max="2024, 4, 26, 21:30" id="sfn">
+            <article>
+                <button type="button" class="my-close-btn p-cross-btn p-close-btn" aria-label="закрыть всплывающее окно"></button>
+                <div class="decor"></div>
+                <div class="content" style="text-align: center;">
+                    <h2 class="visually-hidden">Выиграйте кроссовер 26 апреля!</h2>
+                    <div class="descr" style="text-align: center;">
+                        <b>Выиграйте кроссовер 26&nbsp;апреля!</b><br><br>
+                        Используйте промокод <br><b>SZNAB64944 </b><br> и&nbsp;получите <b>300 Бонусов</b> за&nbsp;покупку ЛотоНабора &laquo;Кроссовер&raquo;.
+                    </div>
+                    <a href="/login?back=profile&promocode=SZNAB64944" class="p-action-button">активировать&nbsp;промокод</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="p-style-popup app p-popup p-mobile-only" popup-rest-time="24, 0, 0" id="app">
+            <article>
+                <div class="decor"></div>
+                <div class="content">
+                    <h2 class="visually-hidden">Установите мобильное приложение Сатти Жулдыз</h2>
+                    <div class="descr" style="text-align: left;">
+                        <b style="line-height: 1.35; font-size: 24px; display: inline-block; margin-bottom: 1ch;">Приложение Satty&nbsp;Zhuldyz</b><br>Узнавайте о&nbsp;выигрышах и специальных акциях в&nbsp;приложении!
+                    </div>
+                    <a href="https://sz.kz/redirect" class="p-action-button js-application-download-link">Скачать приложение</a>
+                    <button type="button" class="p-action-button p-close-btn secondary">Остаться на&nbsp;сайте</button>
+                </div>
+            </article>
+        </section>
+
     </main>
+    <footer class="footer"></footer>
     <script type="module" src="/js/main.js"></script>
+    <!-- <script src="/js/alltogether.js"></script> -->
+    <!-- <script src="/js/form.js"></script> -->
+
 </body>
+
 </html>

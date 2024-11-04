@@ -1,0 +1,65 @@
+/* .custom-popup article .decor {
+    background-size: cover;
+    border: none; 
+} */
+.ten-percent article .decor {
+    background-size: 242px 170px, cover;
+    background-image: url('./assets/img/5.png'), linear-gradient(180deg, #0EC8A1 0%, #008669 100%);
+}
+
+.fifteen-percent article .decor {
+    background-size: 312px 160px, cover;
+    background-image: url('./assets/img/15.png'), linear-gradient(180deg, #0EC8A1 0%, #008669 100%);
+}
+
+.twenty-percent article .decor {
+    background-size: 312px 160px, cover;
+    background-image: url('./assets/img/20.png'), linear-gradient(180deg, #1249B5 0%, #1864F9 100%);
+}
+
+.tb article .decor {
+    background-size: cover;
+    background-image: url('./assets/img/TB.png');
+    border: none;
+}
+
+.sfn article .decor {
+    background-size: cover;
+    background-image: url('../assets/img/649.png');
+    border: none;
+}
+
+.ftw article .decor {
+    background-size: cover;
+    background-image: url('../assets/img/420.png');
+    border: none;
+}
+
+.fts article .decor {
+    background-size: cover;
+    background-image: url('../assets/img/536.png');
+    border: none;
+}
+.juma20 article .decor {
+    background-size: cover;
+    background-image: url('../assets/img/Juma20.png');
+    border: none;
+}
+
+.lt article.ru .decor {
+    background-size: cover;
+    background-image: url('../assets/img/LT-ru.png');
+    border: none;
+}
+
+.lt article.kz .decor {
+    background-size: cover;
+    background-image: url('../assets/img/LT-kz.png');
+    border: none;
+}
+
+.app article .decor {
+    background-size: cover;
+    background-image: url('../assets/img/app2x.png');
+    border: none;
+}
